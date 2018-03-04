@@ -1,0 +1,115 @@
+
+<!Doctype html>
+
+<html>
+ <head>
+     <meta charset="UTF-8">
+    <title>Flask Intro - login page</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://code.jquery.com/jquery 2.1.4.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+
+
+
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+<style>
+
+    @import url('https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css');
+ .container {
+    margin-top: 30px;
+    width: 400px;
+}
+.center { margin: 0 auto; width: 400px;
+
+margin-top: 50px;
+
+}
+        body {
+    background-image: url("ZZ.jpg");
+      background-size:cover;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;}
+
+</style>
+ </head>
+ <body>
+
+    <!----------------------------------->
+<div class="center">
+<video width="400" id="vd" class="center" controls>
+  <source src="goldeneye.mp4" type="video/mp4">
+
+  Your browser does not support HTML5 video.
+</video>
+    <br/>
+    <input id="submitbutton" class="button button2" type="submit" value="Search">
+ <input type="text" id="tb"/>
+    </div>
+<!--<div class="container">
+    <div class="progres//////////s progress-striped active">
+        <div class="bar" style="width: 0%;"></div>
+    </div>
+</div>-->
+
+    <script type="text/javascript">
+
+    function runPyScript(input){
+        var jqXHR = $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:5000/",
+            async: false,
+            data: { mydata: input }
+        });
+
+        return jqXHR.responseText;
+    }
+
+    $('#submitbutton').click(function(){
+    alert('hi');
+    //starttt
+      /*    var progress = setInterval(function () {
+    var $bar = $('.bar');
+
+    if ($bar.width() >= 400) {
+        clearInterval(progress);
+        $('.progress').removeClass('active');
+    } else {
+        $bar.width($bar.width() + 8);
+    }
+    $bar.text($bar.width() / 4 + "%");
+}, 800);
+setInterval()*/
+    //starttt
+        datatosend = document.getElementById('tb').value;
+        //alert(datatosend);
+        result = runPyScript(datatosend);
+        console.log('Got back ' + result);
+        alert('Your Search relates to something at '+result+'seconds');
+        var video = document.getElementById('vd');
+        video.play();
+//video.currentTime(video.currentTime() + parseInt(result));
+video.currentTime=parseInt(result);
+
+    });
+
+
+    </script>
+
+</body>
+</html>
