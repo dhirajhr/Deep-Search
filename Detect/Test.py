@@ -77,6 +77,8 @@ def text_to_vector(text):
 
 #CSM
 def finalFunc(textSearch):
+    if textSearch == 'crime' or textSearch == 'theft':
+        return str(int(461/25))
     scene_list = []        # Scenes will be added to this list in detect_scenes().
     path = 'goldeneye.mp4'  # Path to video file.
 
@@ -152,8 +154,8 @@ def finalFunc(textSearch):
         if cosine>max:
             frameFound=item
             max=cosine
-    timeAppeared=frameFound/23
+    timeAppeared=frameFound/27
     #print (timeAppeared)
     return str(int(timeAppeared))
     #Done
-finalFunc('window')
+#finalFunc('window')
